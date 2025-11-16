@@ -1,39 +1,7 @@
 // src/pages/Alerts.jsx
 
-const MOCK_ALERTS = [
-  {
-    id: 1,
-    name: "cat1",
-    timeAgo: "1d",
-    message: "Started following you",
-    hasDot: true,
-    hasThumb: false,
-  },
-  {
-    id: 2,
-    name: "cat2",
-    timeAgo: "1d",
-    message: "Liked your post",
-    hasDot: true,
-    hasThumb: true,
-  },
-  {
-    id: 3,
-    name: "shelter",
-    timeAgo: "2d",
-    message: "Liked your comment",
-    hasDot: false,
-    hasThumb: false,
-  },
-  {
-    id: 4,
-    name: "lunavoyager",
-    timeAgo: "3d",
-    message: "Saved your post",
-    hasDot: false,
-    hasThumb: true,
-  },
-];
+import { Link } from "react-router-dom";
+import { DEMO_ALERTS } from "../data/demoAlerts";
 
 function Alerts() {
   return (
@@ -48,32 +16,43 @@ function Alerts() {
       </div>
 
       <div>
-        {MOCK_ALERTS.map((alert) => (
-          <div className="alert-item" key={alert.id}>
-            <div className="alert-avatar-wrap">
-              <div className="alert-avatar" />
-              {alert.hasDot && <div className="alert-dot" />}
-            </div>
-
-            <div className="alert-text">
-              <div className="alert-line-1">
-                <span className="alert-name">{alert.name}</span>
-                <span className="alert-time">{alert.timeAgo}</span>
+        {DEMO_ALERTS.map((alert) => (
+          <Link
+            key={alert.id}
+            to={`/alerts/${alert.id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <div className="alert-item">
+              <div className="alert-avatar-wrap">
+                <div className="alert-avatar" />
+                {/* red dot for more urgent cases */}
+                {alert.severity === "Critical" && <div className="alert-dot" />}
               </div>
-              <div className="alert-message">{alert.message}</div>
-            </div>
 
-            {alert.hasThumb && <div className="alert-thumbnail" />}
-          </div>
+              <div className="alert-text">
+                <div className="alert-line-1">
+                  <span className="alert-name">{alert.title}</span>
+                  <span className="alert-time">{alert.timeAgo}</span>
+                </div>
+                <div className="alert-message">
+                  {alert.status} · {alert.location}
+                </div>
+              </div>
+
+              <div className="alert-thumbnail" />
+            </div>
+          </Link>
         ))}
       </div>
 
       <p className="centered-note">
-        These alerts are demo data. Later we&apos;ll load real notifications from
-        the backend.
+        These alerts are demo cases. In a full build, this list would stream
+        live data from our backend.
       </p>
     </div>
   );
 }
 
 export default Alerts;
+
+

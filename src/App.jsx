@@ -1,4 +1,5 @@
 // src/App.jsx
+import AlertDetail from "./pages/AlertDetail.jsx";
 import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 import MapPage from "./pages/MapPage.jsx";
 import Alerts from "./pages/Alerts.jsx";
@@ -83,8 +84,10 @@ function App() {
           <Route path="/updates" element={<UpdatesPage />} />
           <Route path="/cats" element={<CreateAlert />} />
           <Route path="/alerts" element={<Alerts />} />
+          <Route path="/alerts/:id" element={<AlertDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
+
       </main>
 
 
