@@ -125,7 +125,7 @@ function App() {
           <div className="cats-icon-wrapper">
             <FaCat size={26} />
           </div>
-          <span className="cats-label">Cats</span>
+          <span className="cats-label">MeowNow</span>
         </NavLink>
 
         <NavLink
