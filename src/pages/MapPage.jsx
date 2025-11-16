@@ -1,6 +1,16 @@
 // src/pages/MapPage.jsx
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 import { DEMO_ALERTS } from "../data/demoAlerts";
+
+const catIcon = L.divIcon({
+  className: "map-marker",   // uses your existing CSS
+  html: "🐱",                // content inside the bubble
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+  popupAnchor: [0, -18],
+});
+
 
 function MapPage() {
   return (
@@ -26,7 +36,7 @@ function MapPage() {
         />
 
         {DEMO_ALERTS.map((alert) => (
-          <Marker key={alert.id} position={alert.coords}>
+          <Marker key={alert.id} position={alert.coords} icon={catIcon}>
             <Popup>
               <strong>{alert.title}</strong>
               <br />
