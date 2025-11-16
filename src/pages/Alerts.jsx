@@ -46,8 +46,7 @@ function Alerts() {
       </div>
 
       <p className="centered-note">
-        These alerts are demo cases. In a full build, this list would stream
-        live data from our backend.
+        These alerts are demo cases.
       </p>
     </div>
   );

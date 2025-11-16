@@ -52,7 +52,7 @@ function CreateAlert() {
       locationDetails,
       urgency,
     });
-    alert("Demo only: alert submitted. In full app this goes to backend.");
+    alert("Your alert has been submitted!");
   }
 
   return (
@@ -113,7 +113,7 @@ function CreateAlert() {
                   maxWidth: "220px",
                 }}
               >
-                New: Try not to pnaic! Our Gemini AI can help refine your
+                New: Try not to panic! Our Gemini AI can help refine your
                 description for rescuers.
               </p>
               <button

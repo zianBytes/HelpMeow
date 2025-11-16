@@ -92,7 +92,7 @@ function AlertDetail() {
       {/* Timeline placeholder for your QR journey idea */}
       <div className="card">
         <h3 style={{ fontSize: "13px", marginBottom: "6px" }}>
-          Case timeline (demo)
+          Case timeline
         </h3>
         <p
           style={{
@@ -101,8 +101,7 @@ function AlertDetail() {
             marginBottom: "6px",
           }}
         >
-          In the full app, this timeline will update as the case moves from
-          street to rescuer, to shelter/vet, and finally to adoption.
+         
         </p>
         <ul
           style={{
@@ -111,10 +110,10 @@ function AlertDetail() {
             lineHeight: 1.6,
           }}
         >
-          <li>👀 Reported by a HelpMeow user near {alert.location}</li>
-          <li>🚚 Rescuer assigned (QR transfer flow here)</li>
-          <li>🏥 Arrives at shelter / vet</li>
-          <li>🏡 Marked as adopted + happy ending update</li>
+          <li> Reported by a HelpMeow user near {alert.location}</li>
+          <li> Rescuer assigned (QR transfer flow here)</li>
+          <li> Arrives at shelter / vet</li>
+          <li> Marked as adopted + happy ending update</li>
         </ul>
       </div>
     </div>
