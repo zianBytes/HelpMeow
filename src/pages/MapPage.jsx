@@ -1,29 +1,11 @@
 // src/pages/MapPage.jsx
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
-// Simple demo cat markers near NYC
-const CAT_MARKERS = [
-  {
-    id: 1,
-    position: [40.73061, -73.935242], // Manhattan-ish
-    label: "Injured orange kitten spotted here.",
-  },
-  {
-    id: 2,
-    position: [40.7295, -73.9974], // NYU area
-    label: "Shy tuxedo cat near NYU courtyard.",
-  },
-  {
-    id: 3,
-    position: [40.7003, -73.992], // Brooklyn-ish
-    label: "Friendly tabby seen by a local café.",
-  },
-];
+import { DEMO_ALERTS } from "../data/demoAlerts";
 
 function MapPage() {
   return (
     <div className="map-shell">
-      {/* Top overlay (keeps your original vibe) */}
+      {/* Top overlay */}
       <div className="map-overlay-top">
         <div className="map-mode-pill">
           <span className="map-mode-label">Nearby cats</span>
@@ -31,31 +13,35 @@ function MapPage() {
         </div>
       </div>
 
-      {/* Actual interactive map */}
+      {/* Interactive map */}
       <MapContainer
-        center={[40.73061, -73.935242]} // NYC center
+        center={[40.693812, -73.986384]} // NYC-ish
         zoom={12}
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%" }}
       >
-    <TileLayer
-  attribution='&copy; OpenStreetMap contributors'
-  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-/>
+        <TileLayer
+          attribution="&copy; OpenStreetMap contributors"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
 
-
-
-        {CAT_MARKERS.map((cat) => (
-          <Marker key={cat.id} position={cat.position}>
-            <Popup>{cat.label}</Popup>
+        {DEMO_ALERTS.map((alert) => (
+          <Marker key={alert.id} position={alert.coords}>
+            <Popup>
+              <strong>{alert.title}</strong>
+              <br />
+              {alert.location}
+              <br />
+              Status: {alert.status}
+            </Popup>
           </Marker>
         ))}
       </MapContainer>
 
-      {/* Bottom overlay (keeps your stat UI) */}
+      {/* Bottom overlay */}
       <div className="map-overlay-bottom">
         <div className="map-bottom-left">
-          <div className="map-stat-number">3</div>
+          <div className="map-stat-number">{DEMO_ALERTS.length}</div>
           <button className="map-explore-btn" type="button">
             Explore further ↗
           </button>
